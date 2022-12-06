@@ -1,0 +1,55 @@
+﻿@model List<ProductViewModel>
+
+<div class="row">
+
+    @if (Model.Any())
+    {
+        @foreach (var product in Model)
+        {
+            <div class="col-md-3 mb-3">
+
+                <div class="card" style="height:400px">
+                    <div class="card-header">
+
+                        @if (string.IsNullOrWhiteSpace(product.ImagePath))
+                        {
+                            <img class="mx-auto d-block" style="width:200px; height:200px" src="~/images/noPhoto.png" />
+                        }
+                        else
+                        {
+                            <img class="mx-auto d-block" style="width:200px; height:200px" src="~/images/products/@product.ImagePath" />
+                        }
+
+
+
+                    </div>
+                    <div class="card-body">
+                        <div style="height:130px">
+                            <p class="card-text fw-bold">@product.Name</p>
+                            <p class="card-text fw-bold"
+                       style="color:red">@product.UnitPrice TL</p>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a asp-controller="Product" asp-action="Detail" asp-route-productName="@product.Name" asp-route-id="@product.Id" class="btn btn-sm btn-success"><i class="bi bi-info-circle"></i> İncele</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            Ürün Yok
+        </div>
+    }
+
+
+
+
+
+</div>
+
+

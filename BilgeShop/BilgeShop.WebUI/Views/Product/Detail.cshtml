@@ -1,0 +1,35 @@
+﻿@model ProductDetailViewModel
+
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-8">
+
+            @if (!string.IsNullOrWhiteSpace(Model.ImagePath))
+            {
+                <img src="~/images/products/@Model.ImagePath" class="img-fluid rounded" />
+            }
+            else
+            {
+                <img src="~/images/noPhoto.png" class="img-fluid rounded" />
+            }
+
+
+        </div>
+        <div class="col-md-8 ms-1 ">
+            <div class="card-body">
+                <h5 class="card-title fw-bold">@Model.Name</h5>
+                <p class="card-text">@Model.Description</p>
+                <p style="color:darkblue" class="fw-bold"> @Model.UnitPrice TL</p>
+                <p style="color:darkred" class="fw-bold"> Son @Model.UnitInStock Ürün </p>
+              
+
+                @if (!string.IsNullOrWhiteSpace(Model.ModifiedDate.ToString()))
+                {
+                          <p class="card-text"><small class="text-muted"> Son Güncelleme :
+                    @Model.LastUpdate.Value.Minutes dakika önce  </small> </p>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
